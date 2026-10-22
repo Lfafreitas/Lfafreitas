@@ -9,7 +9,7 @@
 </p>
 
 ```console
-luis@delfia:~$ cat perfil.yaml
+luis@dados:~$ cat perfil.yaml
 nome:      Luis Fernando Freitas
 cargo:     Analista de Dados Júnior @ Delfia (Customer Success)
 local:     São Paulo, SP · híbrido/remoto
@@ -20,7 +20,7 @@ missão:    transformar billing, consumo e contrato em decisões
 ```
 
 ```sql
--- luis@delfia:~$ psql -d carreira
+-- luis@dados:~$ psql -d carreira
 SELECT competencia, nivel, onde_uso
 FROM   luis.skills
 ORDER  BY nivel;
@@ -29,10 +29,10 @@ ORDER  BY nivel;
 ```text
  competencia             | nivel              | onde_uso
 -------------------------+--------------------+--------------------------------------------
- Power BI · DAX          | core               | forecast, billing e dashboards de clientes
- SQL                     | core               | consultas, modelagem e validação de dados
+ Power BI · DAX          | core               | projeção de gasto e dashboards de clientes
+ SQL                     | core               | testes de dados (SQL Server/PostgreSQL)
  Python · Pandas         | core               | extração via API, ETL e conciliação
- Modelagem Star Schema   | core               | modelos de forecast de contrato
+ Modelagem Star Schema   | core               | modelos de projeção de contrato
  Git                     | core               | versionamento no dia a dia
  AWS · Terraform · CI/CD | prática em projeto | Dogscout (Lambda, DynamoDB, GitLab CI)
  TypeScript · Grafana    | prática em projeto | dashboards e alertas de consumo via API
@@ -42,10 +42,11 @@ ORDER  BY nivel;
 ```
 
 ```console
-luis@delfia:~$ tail -n 4 conquistas.log
-[billing]   ~US$ 43 mil em cobranças indevidas identificadas e corrigidas (6 meses)
-[consumo]   uso excessivo de métricas detectado: ~US$ 13 mil em 3 meses vs. orçamento de US$ 9 mil/ano
-[testes]    sistema de conciliação de invoices validado por 195 testes automatizados
+luis@dados:~$ tail -n 5 conquistas.log
+[billing]   divergência recorrente de ~US$ 43 mil (6 meses) sinalizada → crédito solicitado ao fornecedor
+[consumo]   ~US$ 9 mil em 3 meses de um orçamento anual de US$ 13 mil → alertas no Grafana e no Dogscout
+[testes]    conciliação de invoices com 195 testes automatizados, aplicada a 3 clientes
+[automação] atualização dos Power BI de 20 clientes via API: ~6 h → minutos
 [carreira]  estagiário → analista júnior em 6 meses
 ```
 
@@ -54,8 +55,8 @@ luis@delfia:~$ tail -n 4 conquistas.log
 | Projeto | O que faz | Stack |
 |---|---|---|
 | **Conciliação de Invoices** *(interno)* | Concilia invoices de observabilidade contra o consumo real, com idempotência, trilha de auditoria e alertas de licenças omitidas | Python · Pandas · SQLAlchemy · pytest |
-| **salesOndemand** *(interno)* | Extrai billing via API (Datadog + Grafana Cloud) e alimenta os Power BI dos clientes | Python · Streamlit · SQLite · PromQL |
-| **Dogscout** *(interno, time de 4)* | Converte consumo de licenças em custo por cliente; fiz a detecção de tendência de consumo e a integração com Grafana | TypeScript · AWS Lambda · DynamoDB · Terraform |
+| **salesOndemand** *(interno)* | Extrai billing via API (Datadog + Grafana Cloud) e atualiza os Power BI de 20 clientes, em produção na VM da empresa | Python · Streamlit · SQLite · PromQL |
+| **Dogscout** *(interno, time de 3)* | Converte consumo de licenças em custo por cliente; fiz a integração com a API, as projeções de subconsumo e parte dos dashboards | TypeScript · AWS Lambda · DynamoDB · Terraform |
 | **Controle de Investimentos** *(pessoal)* | Consolida carteiras de várias corretoras: posição, custo médio, rentabilidade e proventos | FastAPI · React/TS · PostgreSQL · Alembic |
 
 <sub>Projetos internos têm código privado; os detalhes estão no meu LinkedIn.</sub>
@@ -78,7 +79,7 @@ luis@delfia:~$ tail -n 4 conquistas.log
 </p>
 
 ```console
-luis@delfia:~$ echo $NEXT_STEP
+luis@dados:~$ echo $NEXT_STEP
 Analista de Dados / BI em banco ou fintech — vamos conversar?
-luis@delfia:~$ █
+luis@dados:~$ █
 ```
